@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>1self Geosense</title>
+    </head>
+    <body>
+        <div class="app">
+
+            <h1 id="headerMain">1self Geosense</h1>
+            <h1 id="headerSelectDailyAvg" style="display:none;">Select data</h1>
+            <h1 id="headerSelectTodayData" style="display:none;">Select data</h1>
+            <h1 id="headerChart" style="display:none;">The chart</h1>
+
+            <div id="divEnterExit">
+                <div id="divEnter1" style="display:none;" class="divEnter">
+                    <div class="enterText">Entered region at:</div>
+                    <div class="enterTime" id="divEnterTime1"></div>
+                </div>
+                <div id="divExit" style="display:none;" class="divEnter">
+                    <div class="enterText">Exited region at:</div>
+                    <div class="enterTime" id="divExitTime"></div>
+                </div>
+            </div>
+            <div id="divViewDailyAvg" style="display:block;" class="divViewData" onclick="viewDailyAvg();">
+                View your daily averages
+            </div>
+            <div id="divViewTodayData" style="display:block;" class="divViewData" onclick="viewTodayData();">
+                View today's sensor data
+            </div>
+
+            <div id="divDailyAvgList" style="display:none;" class="divData">
+                <div class="chart-select" onclick="viewHome();">&lt;-- Back</div>
+                <hr />
+                <div class="chart-select" onclick="changeChart(this,'humidity');">Humidity %: Avg by Day</div>
+                <hr />
+                <div class="chart-select" onclick="changeChart(this,'temperature');">Temperature: Avg by Day</div>
+                <hr />
+                <div class="chart-select" onclick="changeChart(this,'vis');">Visible light - Lux: Avg by Day</div>
+                <hr />
+                <div class="chart-select" onclick="changeChart(this,'IR');">Infrared light - Lux: Avg by Day</div>
+                <hr />
+                <div class="chart-select" onclick="changeChart(this,'UV');">UV Index: Avg by Day</div>
+                <hr />
+                <div class="chart-select" onclick="changeChart(this,'enter');">Proximity Enter: Count by Day</div>
+                <hr />
+                <div class="chart-select" onclick="changeChart(this,'exit');">Proximity Exit: Count by Day</div>
+            </div>
+
+            <div id="divTodayDataList" style="display:none;" class="divData">
+                <div class="chart-select" onclick="viewHome();">&lt;-- Back</div>
+                <hr />
+                <div class="chart-select" onclick="drawAndShowChart(this, 'humidity');">Humidity %</div>
+                <hr />
+                <div class="chart-select" onclick="drawAndShowChart(this, 'temperature');">Temperature - Celsius</div>
+                <hr />
+                <div class="chart-select" onclick="drawAndShowChart(this, 'vis');">Visible light - Lux</div>
+                <hr />
+                <div class="chart-select" onclick="drawAndShowChart(this, 'IR');">Infrared light - Lux</div>
+                <hr />
+                <div class="chart-select" onclick="drawAndShowChart(this, 'UV');">UV Index</div>
+            </div>
+
+            <div id="divChart" class="divChart" style="display:none;">
+                <div class="chart-select" onclick="viewTodayData();">&lt;-- Back</div>
+                <hr />
+                <div id="chartContainer" class="chartContainer"></div>
+            </div>
+            
+
+
+
+            <div id="divDebug" style="display:none;">
+                <p id="debugText"><b>Debug Text</b><br /></p>
+            </div>
+
+
+
+
+
+            <div id="divDrinkSelect1" style="display:none;">
+                <h3>Did you drink?</h3>
+                <div id="divDrinkDetectedTime"></div>
+                <input type="button" value="coffee" onclick="hadDrink(this.value);">
+                <input type="button" value="tea" onclick="hadDrink(this.value);">
+                <input type="button" value="herbal tea" onclick="hadDrink(this.value);">
+                <input type="button" value="water" onclick="hadDrink(this.value);">
+                <input type="button" value="squash" onclick="hadDrink(this.value);">
+                <!--input type="button" value="other" onclick="hadDrink(this.value);"-->
+                <input type="button" value="none" onclick="hadDrink(this.value);">
+            </div>
+            <div id="divDrinkSelect2" style="display:none;">
+                <h3>Power boost?</h3>
+                <div id="divDrinkDetectedTime"></div>
+                <input type="button" value="caffeinated" onclick="hadDrink2(this.value);">
+                <input type="button" value="decaffeinated" onclick="hadDrink2(this.value);">
+            </div>
+            <div id="divDrinkSelect3" style="display:none;">
+                <h3>So, what did you have?</h3>
+                <div id="divDrinkDetectedTime"></div>
+                <input type="text" value="caffeinated" onclick="hadDrink2(this.value);" id="txtOther" maxlength="30">
+                <input type="button" value="go" onclick="hadDrink3();">
+            </div>
+        </div>
+
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/env.js"></script>
+        <script type="text/javascript" src="js/utils.js"></script>
+        <script type="text/javascript" src="js/proximity-1self.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+
+        <script src="js/d3.v3.js"></script>
+        <script src="js/charting.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,33 @@
+# view AndroidManifest.xml #generated:6
+-keep class com.get1self.geosense.CordovaApp { <init>(...); }
+
+# view AndroidManifest.xml #generated:28
+-keep class de.appplant.cordova.plugin.localnotification.ClearReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:29
+-keep class de.appplant.cordova.plugin.localnotification.ClickActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:32
+-keep class de.appplant.cordova.plugin.localnotification.RestoreReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:27
+-keep class de.appplant.cordova.plugin.localnotification.TriggerReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:31
+-keep class de.appplant.cordova.plugin.notification.ClearReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:37
+-keep class de.appplant.cordova.plugin.notification.ClickActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:30
+-keep class de.appplant.cordova.plugin.notification.TriggerReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:20
+-keep class org.altbeacon.beacon.BeaconIntentProcessor { <init>(...); }
+
+# view AndroidManifest.xml #generated:19
+-keep class org.altbeacon.beacon.service.BeaconService { <init>(...); }
+
+# view AndroidManifest.xml #generated:12
+-keep class org.altbeacon.beacon.startup.StartupBroadcastReceiver { <init>(...); }
+
