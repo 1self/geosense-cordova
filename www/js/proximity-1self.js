@@ -3,6 +3,8 @@ var logSoftExits = false;
 
 function registerBeaconMonitoring() {
 
+    enableBT();
+
     var delegate = new cordova.plugins.locationManager.Delegate();
 
     delegate.didDetermineStateForRegion = function (pluginResult) {
@@ -52,7 +54,23 @@ function registerBeaconMonitoring() {
     //     .done();       
 }
 
-
+function enableBT() {
+    try {
+        cordova.plugins.locationManager.isBluetoothEnabled()
+            .then(function(isEnabled){
+                console.log("isEnabled: " + isEnabled);
+                if (isEnabled) {
+                    // cordova.plugins.locationManager.disableBluetooth();
+                } else {
+                    cordova.plugins.locationManager.enableBluetooth();        
+                }
+            })
+            .fail(console.error)
+            .done();
+    } catch (e) {
+        console.log('error enabling bluetooth', e);
+    }
+}
 
 function enterBeaconRange(regionName, uuid, major, minor) {
 

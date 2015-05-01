@@ -60,20 +60,6 @@ function backButtonHandler(e) {
     }
 }
 
-// {
-//  "dateTime": "2015-03-19T13:26:55.000+00:00",
-//  "objectTags": ["ibeacon", "proximity"],
-//  "actionTags": ["enter"],
-//  "properties": {
-//    "geofence": "ibeacon://geofence/1/1"
-//  }
-// }
-// 
-// 3f670706-8e2e-4f33-b7b2-23ea3122df8b
-// 
-// https://api-staging.1self.co/v1/streams/HGQHKWYKBDEAGAQR/events/ibeacon,proximity/enter/count/daily/barchart
-// 
-
 
 function logToDom(message) {
     var now = new Date();
@@ -81,10 +67,6 @@ function logToDom(message) {
     document.getElementById('debugText').innerHTML += message;
     document.getElementById('debugText').innerHTML += '<br />';
 }
-
-// $('#dataIframe').attr('src', APP_URL + "/streams/" + streamId + "/events/ambient,temperature/sample/mean(celsius)/daily/barchart");
-
-// window.addEventListener("message", receiveMessage, false);
 
 function receiveMessage(event) {
     console.log(event.data);

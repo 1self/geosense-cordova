@@ -9,13 +9,6 @@ function drawChart(containerWidth, objTagArray, actionTagArray, propertyName, st
 
   var parseDate = d3.time.format("%y-%m-%dT%H:%M:%S.%L").parse;
 
-    //   {
-    //     "dateTime": "2015-04-30T11:33:38.528409+00:00",
-    //     "properties": {
-    //         "ultraviolet-index": 0.31
-    //     }
-    // }
-
   var x = d3.time.scale()
       .range([0, width]);
 
@@ -41,8 +34,6 @@ function drawChart(containerWidth, objTagArray, actionTagArray, propertyName, st
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  // var startDate = new Date('1 May 2015');
-  // var endDate = new Date('2 May 2015');
   data = getChartData(objTagArray, actionTagArray, propertyName, startDate, endDate, function(data) {
   // d3.tsv("data.tsv", function(error, data) {
     data.forEach(function(d) {
